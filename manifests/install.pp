@@ -21,7 +21,7 @@ class etcd::install {
       group  => $etcd::group,
       mode   => '0750',
       before => Package['etcd'],
-      after => User[$etcd::user]
+      require => User[$etcd::user]
     }
   }
 
@@ -33,7 +33,7 @@ class etcd::install {
       group  => $etcd::group,
       mode   => '0750',
       before => Package['etcd'],
-      after => User[$etcd::user]
+      require => User[$etcd::user]
     }
   }
 
