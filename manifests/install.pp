@@ -20,7 +20,7 @@ class etcd::install {
       owner  => $etcd::user,
       group  => $etcd::group,
       mode   => '0750',
-      before => Package['etcd']
+      before => Package['etcd'],
       after => User[$etcd::user]
     }
   }
@@ -32,7 +32,7 @@ class etcd::install {
       owner  => $etcd::user,
       group  => $etcd::group,
       mode   => '0750',
-      before => Package['etcd']
+      before => Package['etcd'],
       after => User[$etcd::user]
     }
   }
