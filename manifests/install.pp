@@ -21,6 +21,7 @@ class etcd::install {
       group  => $etcd::group,
       mode   => '0750',
       before => Package['etcd']
+      after => User[$etcd::user]
     }
   }
 
@@ -32,15 +33,8 @@ class etcd::install {
       group  => $etcd::group,
       mode   => '0750',
       before => Package['etcd']
+      after => User[$etcd::user]
     }
-  }
-
-  # Setup resource ordering if appropriate
-  if ($etcd::manage_user and $etcd::manage_data_dir) {
-    User[$etcd::user] -> File[$etcd::data_dir]
-  }
-  if ($etcd::manage_user and $etcd::manage_log_dir) {
-    User[$etcd::user] -> File[$etcd::log_dir]
   }
 
   # Install the required package
